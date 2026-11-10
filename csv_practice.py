@@ -1,3 +1,17 @@
+"""
+Reflection Questions:
+1. You've now completed a full ETL pipeline: read a CSV, transform the data, write a new CSV. How does this compare to doing the same task in Excel? What can Python do that Excel can't do easily, and vice versa?
+   - Building an ETL pipeline in Python offers unmatched automation, repeatability, 
+and scalability for processing large datasets compared to manual workflows in Excel. 
+Python excels at handling thousands of files automatically, executing complex data transformations, 
+and integrating smoothly with web APIs or databases, whereas Excel provides an intuitive graphical interface 
+ideal for quick ad-hoc analysis and visual formatting.
+
+2. Exercise 8 showed you append mode. Think of a real business process that would benefit from an append-mode log file — describe it and explain why append mode is the right tool.
+   - An e-commerce transaction logging or server activity monitoring system is an ideal use case. 
+Append mode is the correct tool because it allows the system to continuously record new chronological events 
+as they occur without overwriting or destroying historical log data.
+"""
 import csv
 print("--- EXERCISE 1: Setup")
 csv_file_path = '/home/hai_dang_phung/ism2411-lab12/data/sales.csv'
