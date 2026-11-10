@@ -48,3 +48,17 @@ with open(csv_file_path, mode="r", encoding="utf-8") as infile, \
             qualifying_rows += 1
 print(f"Total rows in original: {total_rows}")
 print(f"Qualifying rows written to cleaned.csv: {qualifying_rows}")
+print("\n--- EXERCISE 6: csv.DictReader ---")
+total_revenue_dict = 0.0
+with open(csv_file_path, mode="r", encoding="utf-8") as f:
+    dict_reader = csv.DictReader(f)
+    for row in dict_reader:
+        product = row["product"]
+        price = float(row["price"])
+        quantity = int(row["quantity"])
+        line_total = price * quantity
+        total_revenue_dict += line_total
+print(f"Total revenue calculated using DictReader: ${total_revenue_dict:.2f}")
+# Comparison:
+# Use csv.reader for high-performance reading when column order is strictly fixed and known by index positions.
+# Use csv.DictReader when code readability, maintainability, and column name-based access are needed to prevent errors if column orders shift.
