@@ -27,3 +27,24 @@ with open(csv_file_path, mode="r", encoding="utf-8") as f:
         total_revenue_all += line_total
         print(f"{product}: {quantity} units x ${price:.2f} = ${line_total:.2f}")
 print(f"Overall Total Revenue: ${total_revenue_all:.2f}")
+print("\n--- EXERCISE 5: Filter and write ---")
+cleaned_file_path = "/home/hai_dang_phung/ism2411-lab12/data/cleaned.csv"
+total_rows = 0
+qualifying_rows = 0
+with open(csv_file_path, mode="r", encoding="utf-8") as infile, \
+     open(cleaned_file_path, mode="w", newline="", encoding="utf-8") as outfile:
+    reader = csv.reader(infile)
+    writer = csv.writer(outfile)
+    header = next(reader)
+    writer.writerow(["Product", "Price", "Qty", "Total"])
+    for row in reader:
+        total_rows += 1
+        product = row[0]
+        price = float(row[1])
+        quantity = int(row[2])
+        line_total = price * quantity
+        if line_total > 100:
+            writer.writerow([product, price, quantity, f"{line_total:.2f}"])
+            qualifying_rows += 1
+print(f"Total rows in original: {total_rows}")
+print(f"Qualifying rows written to cleaned.csv: {qualifying_rows}")
