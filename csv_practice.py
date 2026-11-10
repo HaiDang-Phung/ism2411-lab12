@@ -79,3 +79,10 @@ with open(csv_file_path, mode="r", encoding="utf-8") as f:
 sorted_summary = sorted(product_summary.items())
 for prod, rev in sorted_summary:
     print(f"{prod}: ${rev:.2f}")
+print("\n--- EXERCISE 8: Append mode log ---")
+from datetime import datetime
+log_file_path = "/home/hai_dang_phung/ism2411-lab12/data/run_log.txt"
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+with open(log_file_path, mode="a", encoding="utf-8") as logfile:
+    logfile.write(f"{timestamp} | Total Revenue: ${total_revenue_all:.2f}\n")
+print(f"Logged run at {timestamp} to {log_file_path}")
