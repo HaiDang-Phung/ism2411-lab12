@@ -6,3 +6,11 @@ with open(csv_file_path, mode="r", encoding="utf-8") as f:
     reader = csv.reader(f)
     for row in reader:
         print(row)
+print("\n--- EXERCISE 3: Skip the header ---")
+with open(csv_file_path, mode="r", encoding="utf-8") as f:
+    reader = csv.reader(f)
+    header = next(reader)
+    print("Header:", header)
+    print("Data rows:")
+    for row in reader:
+        print(row)
