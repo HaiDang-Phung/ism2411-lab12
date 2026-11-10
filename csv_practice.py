@@ -62,3 +62,20 @@ print(f"Total revenue calculated using DictReader: ${total_revenue_dict:.2f}")
 # Comparison:
 # Use csv.reader for high-performance reading when column order is strictly fixed and known by index positions.
 # Use csv.DictReader when code readability, maintainability, and column name-based access are needed to prevent errors if column orders shift.
+print("\n--- EXERCISE 7: Sales summary by product ---")
+product_summary = {}
+with open(csv_file_path, mode="r", encoding="utf-8") as f:
+    reader = csv.reader(f)
+    next(reader)  
+    for row in reader:
+        product = row[0]
+        price = float(row[1])
+        quantity = int(row[2])
+        line_total = price * quantity
+        if product in product_summary:
+            product_summary[product] += line_total
+        else:
+            product_summary[product] = line_total
+sorted_summary = sorted(product_summary.items())
+for prod, rev in sorted_summary:
+    print(f"{prod}: ${rev:.2f}")
